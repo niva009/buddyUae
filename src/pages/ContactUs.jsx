@@ -15,7 +15,7 @@ const ContactUs = () => {
         />
         <meta name="keywords" content={seoData?.contact_us} />
         <meta property="og:title" content="Welcome to buddyuae.com" />
-        <meta
+        <meta 
           property="og:description"
           content="Welcome to buddyuae.com,Your Office and Home Buddy , Explore our wide selection of Home and Office equipment"
         />

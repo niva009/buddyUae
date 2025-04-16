@@ -1,3 +1,5 @@
+'use clieent';
+
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,

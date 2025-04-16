@@ -1,15 +1,15 @@
-import { Link } from "react-router-dom";
-import QuantityButton from "../../components/product/QuantityButton";
+import Link from "next/link";
+import QuantityButton from "../../../components/product/QuantityButton";
 import { X } from "lucide-react";
-import { REMOVE_PRODUCT_FROM_CART, newFormRequest } from "../../api";
+import { REMOVE_PRODUCT_FROM_CART, newFormRequest } from "../../../components/api/index";
 import { useQueryClient } from "@tanstack/react-query";
-import { useUserStore } from "../../lib/slice/user";
+import { useUserStore } from "../../../lib/slice/user";
 import toast from "react-hot-toast";
-import useCurrencyFormatter from "../../utils/useCurrency";
-import { useCartStore } from "../../lib/slice/cart";
-import CartSummary from "../../components/cart/Summary";
+import useCurrencyFormatter from "../../../utils/useCurrency";
+import { useCartStore } from "../../../lib/slice/cart";
+import CartSummary from "../../../components/cart/Summary";
 import { useEffect, useState } from "react";
-import CustomerCouponSelectScreen from "../../components/cart/SelectCoupon";
+import CustomerCouponSelectScreen from "../../../components/cart/SelectCoupon";
 
 export default function Cart() {
   const { user } = useUserStore((state) => ({
@@ -112,6 +112,10 @@ export default function Cart() {
     }
   };
 
+  console.log("cartItems", cartItems);
+  console.log('product_id:', i?.product_id);
+
+
   return (
     <div className="min-h-fit h-full pb-20">
       <div className="text-center text-[1.3rem] font-semibold py-4">
@@ -158,24 +162,29 @@ export default function Cart() {
                       <td>
                         <div className=" flex items-center gap-4">
                           <div className="avatar">
-                            <Link
-                              to={`/product/${i?.product_id}`}
-                              className="mask w-12 border border-black/20 rounded-md overflow-hidden lg:w-20 lg:h-24"
-                            >
-                              <img
-                                className="h-full w-full object-contain"
-                                src={i?.productImage}
-                                alt={i?.name}
-                              />
-                            </Link>
+                          { i?.product_id && (
+  <Link
+    href={`/product/${i.product_id}`}
+    className="mask w-12 border border-black/20 rounded-md overflow-hidden lg:w-20 lg:h-24"
+  >
+    <img
+      className="h-full w-full object-contain"
+      src={i?.productImage}
+      alt={i?.name}
+    />
+  </Link>
+)}
+
                           </div>
                           <div className="flex items-center gap-2">
-                            <Link
-                              to={`/product/${i?.product_id}`}
-                              className="font-bold min-w-40 w-28 text-[.85rem]"
-                            >
-                              {i?.name}
-                            </Link>
+                          { i?.product_id && (
+  <Link
+    href={`/product/${i.product_id}`}
+    className="font-bold min-w-40 w-28 text-[.85rem]"
+  >
+    {i?.name}
+  </Link>
+)}
                           </div>
                         </div>
                       </td>

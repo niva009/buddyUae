@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',        // App Router pages and components
+    './components/**/*.{js,ts,jsx,tsx}', // If you keep components separately
+    './styles/**/*.{css,scss}',          // Global styles
+  ],
   daisyui: {
     themes: [
       {
