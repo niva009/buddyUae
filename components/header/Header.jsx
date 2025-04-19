@@ -1,7 +1,9 @@
-'use client';
+'use client'
 
 import  { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
+import { Suspense } from 'react'
+
 import {
   CircleUser,
   Heart,

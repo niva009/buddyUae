@@ -1,54 +1,13 @@
 
 'use client';
 
-// import { useQuery } from "@tanstack/react-query";
 import React from "react";
-// import { newRequest, FEATURED_CATEGORY } from "../../../api";
 import Link from "next/link";
 
 export default function CategoryCard() {
-  // GET FEATURED_CATEGORY
-  // const { data: featuredCategory, isLoading } = useQuery({
-  //   queryKey: ["featuredCategory"],
-  //   queryFn: () =>
-  //     newRequest.get(FEATURED_CATEGORY).then((res) => {
-  //       return res.data;
-  //     }),
-  // });
+
   return (
-    // <div className="grid w-full lg:grid-cols-3 gap-5">
-    //   {categories?.map((i) => (
-    //     <div
-    //       key={i?.id}
-    //       className="group flex relative flex-col justify-between w-full lg:h-48 h-[30rem] lg:min-h-[470px] rounded-xl bg-cover bg-center"
-    //       style={{ backgroundImage: `url(${i?.bg})` }}
-    //     >
-    //       <div className="flex flex-col p-6 gap-3 text-white justify-center text-start">
-    //         <div className="flex text-xl font-medium group-hover:text-[1.52rem] ease-in duration-300">
-    //           {i?.title}
-    //         </div>
-    //         <div className="text-justify flex text-sm">{i?.text}</div>
-    //       </div>
-    //       <div className="text-center justify-center flex">
-    //         <img
-    //           src={i?.img}
-    //           className="object-contain h-48 absolute bottom-14"
-    //           alt={i?.title}
-    //         />
-    //       </div>
-    //       <div className="flex flex-col p-6 justify-center text-center group-hover:bg-gradient-to-t from-black group-hover:rounded-lg to-transparent group-hover:z-10 group-hover:pt-28">
-    //         <div className="flex justify-center">
-    //           <Link
-    //             to={`/store?category=${i?.category?.id}`}
-    //             className="h-10 w-40 z-0 font-semibold bg-blue  text-[0.94rem] rounded-lg flex items-center justify-center px-7 text-white  bg-blue-500 hover:bg-blue-600  transform transition-transform duration-1000 opacity-0 group-hover:opacity-100 group-hover:-translate-y-5"
-    //           >
-    //             Shop Now
-    //           </Link>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   ))}
-    // </div>
+   
     <div className="grid w-full md:grid-cols-2 lg:grid-cols-3 gap-5">
       <div
         className="group flex relative flex-col justify-between w-full lg:h-48 h-[30rem] lg:min-h-[470px] rounded-xl bg-cover bg-center"
@@ -61,7 +20,7 @@ export default function CategoryCard() {
           <div className="text-justify flex text-sm">
             Safeguard your valuables and documents with our top-rated fire
             safes, built to endure extreme temperatures and flame damage.
-          </div>
+          </div>  
         </div>
         <div className="text-center justify-center flex">
           <img

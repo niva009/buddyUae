@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import PropTypes from 'prop-types';
+import { Suspense } from 'react';
 
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
@@ -51,7 +52,11 @@ export default function RootLayout({ children }) {
           <ForgotPasswordScreen />
 
           {/* Header */}
-          {!shouldHideHeaderFooter && <Header />}
+          {!shouldHideHeaderFooter && (
+            <Suspense fallback={<div>Loading header...</div>}>
+              <Header />
+            </Suspense>
+          )}
 
           {/* Main Content */}
           <div className="2xl:container mx-auto">
