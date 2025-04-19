@@ -1,6 +1,7 @@
 'use client';
 
 import Link  from "next/link";
+import { useState, useEffect} from "react";
 import QuantityButton from "../../components/product/QuantityButton";
 import { X } from "lucide-react";
 import { REMOVE_PRODUCT_FROM_CART, newFormRequest } from "../../components/api/index";
@@ -10,7 +11,6 @@ import toast from "react-hot-toast";
 import useCurrencyFormatter from "../../utils/useCurrency";
 import { useCartStore } from "../../lib/slice/cart";
 import CartSummary from "../../components/cart/Summary";
-import { useEffect, useState } from "react";
 import CustomerCouponSelectScreen from "../../components/cart/SelectCoupon";
 
 export default function Cart() {
@@ -22,9 +22,10 @@ export default function Cart() {
     removeItemFromCart: state.removeItemFromCart,
   }));
 
-  let appliedCoupon = localStorage.getItem("coupon");
+
 
   const [subtotal, setSubtotal] = useState(0);
+  const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [taxAmount, setTaxAmount] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [discountAmount, setDiscountAmount] = useState(0);
@@ -37,10 +38,22 @@ export default function Cart() {
   const TAX_RATE = 0.05;
   console.log(maxDiscountAmount);
 
+    useEffect(() => {
+    if (typeof window !== "undefined") {
+      const coupon = localStorage.getItem("coupon");
+      if (coupon) {
+        setAppliedCoupon(coupon);
+      }
+    }
+  }, []);
+
   useEffect(() => {
-    if (JSON.parse(appliedCoupon)?.id) {
-      setSelectedCoupon(JSON.parse(appliedCoupon));
-      setCode(JSON.parse(appliedCoupon)?.code);
+    if (appliedCoupon) {
+      const parsedCoupon = JSON.parse(appliedCoupon);
+      if (parsedCoupon?.id) {
+        setSelectedCoupon(parsedCoupon);
+        setCode(parsedCoupon.code);
+      }
     }
   }, [appliedCoupon]);
 

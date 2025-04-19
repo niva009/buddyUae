@@ -1,0 +1,10 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/page": "/",
+  "/product/[slug]/page": "/product/[slug]",
+  "/wishlist/page": "/wishlist",
+  "/checkout/page": "/checkout",
+  "/store/page": "/store",
+  "/contact/page": "/contact",
+  "/cart/page": "/cart"
+}
