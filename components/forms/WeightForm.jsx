@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -21,10 +21,11 @@ const schema = yup.object().shape({
   remarks: yup.string(),
 });
 
-export default function WeightForm({ weightId, setWeightId, user }) {
+export default function WeightForm({ setWeightId, user }) {
   const queryClient = useQueryClient();
   const [loader, setLoader] = useState(false);
   const [liftAvailable, setLiftAvailable] = useState(true);
+  consr[error,setclearErrors ] = useState('');
 
   const {
     register,
@@ -45,7 +46,7 @@ export default function WeightForm({ weightId, setWeightId, user }) {
         });
         return false;
       } else {
-        clearErrors("no_of_floors");
+        setclearErrors("no_of_floors");
       }
     }
 

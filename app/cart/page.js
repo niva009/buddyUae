@@ -35,6 +35,7 @@ export default function Cart() {
   const [minAmmountForDiscountAmount, setMinAmmountForDiscountAmount] =
     useState(0);
   const TAX_RATE = 0.05;
+  console.log(maxDiscountAmount);
 
   useEffect(() => {
     if (JSON.parse(appliedCoupon)?.id) {
@@ -85,6 +86,7 @@ export default function Cart() {
     selectedCoupon,
     minAmmountForDiscountAmount,
     subtotal,
+    discountAmount,
     taxAmount,
     setTotalAmount,
   ]);

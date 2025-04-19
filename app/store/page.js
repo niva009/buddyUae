@@ -359,8 +359,8 @@ export default function Shop() {
           <div className="flex flex-col gap-8 lg:gap-2.5 w-full">
             <div className="grid w-full md:grid-cols-2 lg:grid-cols-4 gap-5">
               {products?.data?.data?.map((product) => {
-                let discount = (product?.unit_price * product?.discount) / 100;
-                let discountedPrice = product?.unit_price - discount;
+                // let discount = (product?.unit_price * product?.discount) / 100;
+                // let discountedPrice = product?.unit_price - discount;
                 return (
                   <ProductCard
                     key={product?.id}

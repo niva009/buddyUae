@@ -1,3 +1,6 @@
+
+'use client';
+
 import { useQuery } from "@tanstack/react-query";
 import { newRequest, TOP_OFFER } from "../../components/api/index";
 import toast from "react-hot-toast";

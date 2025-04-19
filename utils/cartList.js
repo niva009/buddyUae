@@ -1,3 +1,5 @@
+'use client';
+
 import { useQuery } from "@tanstack/react-query";
 import { newRequest, LIST_CART } from "../components/api/index";
 import { useUserStore } from "../lib/slice/user";

@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+'use client';
+
+import  { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from 'next/link'
 
@@ -200,7 +202,7 @@ export default function HeroHome() {
             <div className="text-center lg:text-right font-medium text-[.85rem] text-white">
               Discover Our Collection for Stylish and Functional Solutions to
               <br className="hidden lg:block" />
-              Elevate Your Home Space
+              Elevate Your Home Space
             </div>
             <Link
               href={`store?product-type=home`}

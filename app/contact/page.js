@@ -1,35 +1,22 @@
-'use client';
-import { Helmet } from "react-helmet-async";
+'use Client';
+
 import ContactForm from "../../components/contact/Form";
 import SubscribtionForm from "../../components/forms/SubscribtionForm";
-import useSeoData from "../../utils/useSeoData";
+import Head from "next/head";
+
 
 const ContactUs = () => {
-  const { seoData } = useSeoData();
+
   return (
     <>
-      <Helmet>
-        <title>Buddy Star | Contact Us</title>
-        <meta
-          name="description"
-          content="Welcome to buddyuae.com,Your Office and Home Buddy , Explore our wide selection of Home and Office equipment"
-        />
-        <meta name="keywords" content={seoData?.contact_us} />
-        <meta property="og:title" content="Welcome to buddyuae.com" />
-        <meta 
-          property="og:description"
-          content="Welcome to buddyuae.com,Your Office and Home Buddy , Explore our wide selection of Home and Office equipment"
-        />
-        <meta property="og:image" content="/favicon.png" />
-        <meta property="og:url" content="https://www.buddyuae.com" />
-        <meta name="twitter:card" content="/favicon.png" />
-        <meta name="twitter:title" content="Welcome to buddyuae.com" />
-        <meta
-          name="twitter:description"
-          content="Welcome to buddyuae.com,Your Office and Home Buddy , Explore our wide selection of Home and Office equipment"
-        />
-        <meta name="twitter:image" content="/favicon.png"></meta>
-      </Helmet>
+   <Head>
+          <title>Contact Buddy UAE | Office Equipment & Storage Security </title>
+          <meta
+            name="description"
+            content="Contact Buddy UAE for inquiries about our products or services. As a leading office supplies supplier in Dubai, we offer office equipment, security, and more."
+          />
+        </Head>
+
       <div className="flex min-h-fit flex-col">
         <div className="w-full relative">
           <img
@@ -42,10 +29,10 @@ const ContactUs = () => {
               <p className="text-lg">Have a question or need assistance?</p>
               <h5 className="font-semibold text-5xl">Connect with Us</h5>
               <p className="max-w-lg">
-                Whether you're looking for guidance, have inquiries about our
+                Whether you are looking for guidance, have inquiries about our
                 services, or need assistance with a specific issue, our
-                dedicated team is ready to assist you. Don’t hesitate to reach
-                out—your satisfaction is our top priority !
+                dedicated team is ready to assist you. Dont hesitate to reach
+                out your satisfaction is our top priority 
               </p>
             </div>
             <div className="flex flex-col">
@@ -76,7 +63,7 @@ const ContactUs = () => {
         >
           <div className=" text-black flex gap-1  flex-col justify-center items-center ">
             <div className="lg:text-3xl text-2xl font-semibold">
-              Unlock EXCLUSIVE offers and deals
+              Unlock EXCLUSIVE offers and deals
             </div>
             <div className="text-[.95rem]">
               Sign up for deals, new products and promotions

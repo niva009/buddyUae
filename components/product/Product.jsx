@@ -1,12 +1,21 @@
 import Link from "next/link";
 import RatingStars from "./Star";
 import useCurrencyFormatter from "../../utils/useCurrency";
+import slugify from "slugify";
 
 const ProductCard = ({ product, discountedPrice }) => {
   const formatCurrencyAED = useCurrencyFormatter();
+
+  const handleProductClick = () => {
+    localStorage.setItem("selectedProductId", product?.id);
+  };
+
+  const productSlug = slugify(product?.name || "", { lower: true });
+
+  console.log("product information", product);
   return (
     <Link
-      href={`/product/${product?.id}`}
+      href={`/product/${productSlug}`}
       key={product?.id}
       className="group relative"
     >
@@ -15,6 +24,7 @@ const ProductCard = ({ product, discountedPrice }) => {
           className="h-full object-contain w-full"
           src={product?.thumbnail_img_link}
           alt={product?.name}
+          onClick={handleProductClick}
         />
       </div>
       <div className="flex absolute bg-blue/50 text-white h-6 w-14 top-3 left-14 lg:left-3  font-bold rounded-sm text-sm items-center justify-center">

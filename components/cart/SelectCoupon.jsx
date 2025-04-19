@@ -5,9 +5,10 @@ import { Fragment, useEffect } from "react";
 import toast from "react-hot-toast";
 import { COUPON_LIST, newRequest } from "../../components/api/index";
 import { useQuery } from "@tanstack/react-query";
-import { Search, Sparkles, X } from "lucide-react";
+import { Search, Sparkles } from "lucide-react";
 import { useState } from "react";
 import Pagination from "../../lib/pagination/index";
+import PropTypes from "prop-types";
 
 export default function CustomerCouponSelectScreen({
   popupOpen,
@@ -20,7 +21,7 @@ export default function CustomerCouponSelectScreen({
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState();
   // GET
-  const { data: couponListing, isLoading } = useQuery({
+  const { data: couponListing} = useQuery({
     queryKey: ["couponListing", currentPage, keyword],
     queryFn: () =>
       newRequest
@@ -200,3 +201,11 @@ export default function CustomerCouponSelectScreen({
     </>
   );
 }
+
+CustomerCouponSelectScreen.propTypes = {
+  popupOpen: PropTypes.bool.isRequired,
+  setPopupOpen: PropTypes.func.isRequired,
+  code: PropTypes.string.isRequired,
+  setCode: PropTypes.func.isRequired,
+  setSelectedCoupon: PropTypes.func.isRequired,
+};

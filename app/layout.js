@@ -1,7 +1,9 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import PropTypes from 'prop-types';
+
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import LoginScreen from '../components/screens/auth/Login';
@@ -78,3 +80,7 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+RootLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};

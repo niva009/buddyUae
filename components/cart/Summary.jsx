@@ -1,10 +1,12 @@
 'use client';
-import React from "react";
+
 import useCurrencyFormatter from "../../utils/useCurrency";
 import Link from "next/link";
 import { ArrowRight, CreditCard, Truck } from "lucide-react";
 import { CHECK_COUPON, newRequest } from "../../components/api/index";
 import toast from "react-hot-toast";
+import PropTypes from "prop-types";
+
 
 export default function CartSummary({
   subtotal,
@@ -187,3 +189,25 @@ export default function CartSummary({
     </div>
   );
 }
+
+
+CartSummary.propTypes = {
+  subtotal: PropTypes.number.isRequired,
+  totalAmount: PropTypes.number.isRequired,
+  discountAmount: PropTypes.number.isRequired,
+  taxAmount: PropTypes.number.isRequired,
+  setPopupOpen: PropTypes.func.isRequired,
+  code: PropTypes.string.isRequired,
+  setCode: PropTypes.func.isRequired,
+  setSelectedCoupon: PropTypes.func.isRequired,
+  selectedCoupon: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  }),
+  createPaymentIntent: PropTypes.func.isRequired,
+  havingDefaultAddress: PropTypes.bool.isRequired,
+  cashOnDelivery: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+  paymentIntentLoader: PropTypes.bool.isRequired,
+  loader: PropTypes.bool.isRequired,
+};
+

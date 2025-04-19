@@ -34,7 +34,7 @@ export default function RadioBoxes() {
                     relative flex cursor-pointer rounded-full px-5 py-2.5 shadow-sm focus:outline-none`
               }
             >
-              {({ active, checked }) => (
+              {({ checked }) => (
                 <>
                   <div className="flex w-full gap-3 items-center justify-between">
                     <div className="flex items-center">

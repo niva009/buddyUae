@@ -1,3 +1,6 @@
+
+'use client';
+
 // import { useQuery } from "@tanstack/react-query";
 import React from "react";
 // import { newRequest, FEATURED_CATEGORY } from "../../../api";

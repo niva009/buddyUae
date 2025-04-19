@@ -1,6 +1,7 @@
-'use client'
+'use client';
+
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { newRequest, TOP_BRAND_LIST } from "../../components/api/index";
 import Link from "next/link";
 

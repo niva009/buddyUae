@@ -1,3 +1,5 @@
+'use Client'; 
+
 import { Heart } from "lucide-react";
 import React from "react";
 import { ADD_WISHLIST, newFormRequest, REMOVE_WISHLIST } from "../api/index";

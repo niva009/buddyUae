@@ -6,7 +6,7 @@ export default function Reviews({ data }) {
   return (
     <div className="flex mt-5 flex-wrap w-full gap-2 justify-center">
       {data?.data?.data?.map((i) => (
-        <div className="flex w-80 border p-3 border-gray rounded-xl">
+        <div key={i?.id} className="flex w-80 border p-3 border-gray rounded-xl">
           <div className="flex flex-col items-start">
             <div className="flex text-2xl items-center">
               <RatingStars rating={i?.rating} />

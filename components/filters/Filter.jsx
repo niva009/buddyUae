@@ -1,5 +1,5 @@
 'use Client';
-import React from "react";
+
 import { BRAND_LIST, newRequest } from "../../components/api/index";
 import { useQuery } from "@tanstack/react-query";
 import { priceFilterList } from "../../constant/data";

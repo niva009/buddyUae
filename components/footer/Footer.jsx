@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { useRouter,usePathname } from "next/navigation";
 
@@ -90,7 +89,7 @@ export default function Footer() {
         <div className="lg:border-t lg:border-[#6C7275] flex items-center justify-between  flex-col lg:flex-row  pb-12 w-full">
           <div className="lg:flex flex py-4 lg:flex-row flex-col  gap-3 text-[.85rem]">
             <p className="text-white">
-              Copyright © 2024 Buddy Star General Trading LLC. All rights
+              Copyright © 2024 Buddy Star General Trading LLC. All rights
               reserved
             </p>
             <div className="flex gap-2 justify-center lg:justify-start">

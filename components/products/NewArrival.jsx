@@ -1,3 +1,5 @@
+'use client';
+
 import React from "react";
 import { newRequest, FEATURED_PRODUCT } from "../../components/api/index";
 import { useQuery } from "@tanstack/react-query";

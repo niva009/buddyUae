@@ -1,8 +1,10 @@
+'use client';
+
 import axios from "axios";
 
 // Axios instances
 const baseConfig = {
-  baseURL: process.env.NEXT_API_URL || "https://admin.buddyuae.com/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://admin.buddyuae.com/api",
 };
 
 export const basicRequest = axios.create(baseConfig);

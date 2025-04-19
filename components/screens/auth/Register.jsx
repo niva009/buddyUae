@@ -1,3 +1,5 @@
+'use Client';
+
 import { Eye, Verified, X } from "lucide-react";
 import { useState } from "react";
 import * as Yup from "yup";

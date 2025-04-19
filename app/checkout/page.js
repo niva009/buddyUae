@@ -25,7 +25,9 @@ const paymentElementOptions = {
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const [error, setError] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+const [error, setError] = useState(null);
+
   const [message, setMessage] = useState(null);
   const [loading, setIsLoading] = useState(false);
 
@@ -35,9 +37,8 @@ const CheckoutForm = () => {
     if (!stripe) {
       return;
     }
-    const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret"
-    );
+    const clientSecret = new URLSearchParams(window.location.search).get("payment_intent_client_secret");
+
 
     if (!clientSecret) {
       return;
@@ -94,7 +95,8 @@ const CheckoutForm = () => {
   return (
     <>
       <div className="text-center w-full text-[1.3rem] font-semibold py-4">
-        Let's Complete Checkout
+
+        Complete Checkout
       </div>
       {isLoading ? (
         <div className="h-5 w-5 mx-auto my-28 animate-spin rounded-full border-b-2 border-blue"></div>

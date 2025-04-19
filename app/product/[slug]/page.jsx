@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useParams } from 'next/navigation'
 import Link from "next/link";
 import RatingStars from "../../../components/product/Star";
@@ -26,6 +26,7 @@ export default function Product() {
   const [loader, setLoader] = useState(false);
   const [reviewScreenOpen, setReviewScreenOpen] = useState(false);
   const [largeViewScreenOpen, setLargeViewScreenOpen] = useState(false);
+  const [productId, setProductId] = useState(null);
   const formatCurrencyAED = useCurrencyFormatter();
   const { user } = useUserStore((state) => ({
     user: state.user,
@@ -35,20 +36,31 @@ export default function Product() {
     cartItems: state.cartItems,
   }));
 
+
+  useEffect(() => {
+    const storedId = localStorage.getItem("selectedProductId");
+    if (storedId) {
+      setProductId(parseInt(storedId));
+    }
+  }, []);
+
+  console.log("proudct id1", productId);
+
   // GET PRODUCTS
   const { data: productDetails, isLoading } = useQuery({
-    queryKey: ["productDetails", id],
+    queryKey: ["productDetails", productId],
+    enabled: !!productId, // only runs if productId exists
     queryFn: () =>
       newRequest
         .get(PRODUCT_VIEW, {
           params: {
-            product_id: parseInt(id),
+            product_id: productId,
           },
         })
-        .then((res) => {
-          return res.data;
-        }),
+        .then((res) => res.data),
   });
+
+  console.log("product details informaation", productDetails);
 
   let colors = productDetails?.product?.colors;
   let maxQuantity = productDetails?.product?.quantity;
@@ -429,11 +441,11 @@ export default function Product() {
                     </div>
                     <div className="collapse-content -mt-1">
                       <p className="text-grey">
-                        I've been using the Pentair Expedition 500 for several
+                        I have been using the Pentair Expedition 500 for several
                         months now, and it has exceeded all my expectations.
                         This kayak is built for adventure, with plenty of
                         storage space for all my gear and a comfortable seat.
-                        I've been using the Pentair Expedition 500 for several
+                        I have been using the Pentair Expedition 500 for several
                         months now, and it has exceeded all my expectations.
                         This kayak is built for adventure, with plenty of
                         storage space for all my gear and a comfortable seat.
@@ -447,11 +459,11 @@ export default function Product() {
                     </div>
                     <div className="collapse-content -mt-1">
                       <p className="text-grey">
-                        I've been using the Pentair Expedition 500 for several
+                        I have been using the Pentair Expedition 500 for several
                         months now, and it has exceeded all my expectations.
                         This kayak is built for adventure, with plenty of
                         storage space for all my gear and a comfortable seat.
-                        I've been using the Pentair Expedition 500 for several
+                        I have been using the Pentair Expedition 500 for several
                         months now, and it has exceeded all my expectations.
                         This kayak is built for adventure, with plenty of
                         storage space for all my gear and a comfortable seat.
@@ -465,11 +477,11 @@ export default function Product() {
                     </div>
                     <div className="collapse-content -mt-1">
                       <p className="text-grey">
-                        I've been using the Pentair Expedition 500 for several
+                        I have been using the Pentair Expedition 500 for several
                         months now, and it has exceeded all my expectations.
                         This kayak is built for adventure, with plenty of
                         storage space for all my gear and a comfortable seat.
-                        I've been using the Pentair Expedition 500 for several
+                        I have been using the Pentair Expedition 500 for several
                         months now, and it has exceeded all my expectations.
                         This kayak is built for adventure, with plenty of
                         storage space for all my gear and a comfortable seat.
@@ -483,11 +495,11 @@ export default function Product() {
                     </div>
                     <div className="collapse-content -mt-1">
                       <p className="text-grey">
-                        I've been using the Pentair Expedition 500 for several
+                        I have been using the Pentair Expedition 500 for several
                         months now, and it has exceeded all my expectations.
                         This kayak is built for adventure, with plenty of
                         storage space for all my gear and a comfortable seat.
-                        I've been using the Pentair Expedition 500 for several
+                        I have been using the Pentair Expedition 500 for several
                         months now, and it has exceeded all my expectations.
                         This kayak is built for adventure, with plenty of
                         storage space for all my gear and a comfortable seat.
@@ -518,7 +530,7 @@ export default function Product() {
                 You might also like
               </div>
               <div className="flex flex-col text-[0.94rem] text-end justify-end font-semibold underline underline-offset-4">
-                <Link href="/shop" className="flex justify-end gap-2" href="">
+                <Link href="/shop" className="flex justify-end gap-2" >
                   More Products <ArrowRight className="stroke-1 w-6" />{" "}
                 </Link>
               </div>

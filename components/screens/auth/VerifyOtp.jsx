@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useState, useRef } from "react";
 import {
   SEND_OTP,
@@ -24,6 +25,8 @@ export default function VerifyOtpScreen() {
   const [minutes, setMinutes] = useState(3);
   const [seconds, setSeconds] = useState(30);
 
+  const OTP_LENGTH = 4; // Moved to the top
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (seconds > 0) {
@@ -38,11 +41,11 @@ export default function VerifyOtpScreen() {
         }
       }
     }, 1000);
-
+  
     return () => {
       clearInterval(interval);
     };
-  }, [seconds]);
+  }, [seconds, minutes]); // Add 'minutes' to the dependency array
 
   useEffect(() => {
     let waitingInterval;
@@ -76,8 +79,7 @@ export default function VerifyOtpScreen() {
     }
   };
 
-  const OTP_LENGTH = 4;
-  const inputRefs = Array.from({ length: OTP_LENGTH }, () => useRef(null));
+  const inputRefs = Array.from({ length: OTP_LENGTH }, ); 
   const [otp, setOtp] = useState(new Array(OTP_LENGTH).fill(""));
 
   const focusNextInputField = (index) => {
@@ -142,7 +144,7 @@ export default function VerifyOtpScreen() {
         toast.success(res?.data?.message);
         setVerifyOtpOpen(false);
         // Clear the OTP fields after successful verification
-        setOtp(new Array(OTP_LENGTH).fill(""));
+        setOtp(new Array(OTP_LENGTH).fill("")); 
       } else if (res.data.status == 400) {
         setLoader(false);
         setWaitingTime(3 * 60);
