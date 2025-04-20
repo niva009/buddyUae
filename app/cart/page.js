@@ -13,7 +13,7 @@ import { useCartStore } from "../../lib/slice/cart";
 import CartSummary from "../../components/cart/Summary";
 import CustomerCouponSelectScreen from "../../components/cart/SelectCoupon";
 
-export default function Cart() {
+export default function Cart() {  
   const { user } = useUserStore((state) => ({
     user: state.user,
   }));

@@ -183,19 +183,23 @@ export default function ShopClient() {
               />
             )}
           </div>
-          <ReactPlayer
-            url={
-              productType === "office"
-                ? "./store/office.mp4"
-                : "./store/home.mp4"
-            }
-            width="100%"
-            height="auto"
-            playing
-            loop
-            muted={mute}
-            className="object-cover !z-1"
-          />
+          <video
+        autoPlay
+        loop
+        muted={mute}
+        playsInline
+        className="object-cover w-full h-auto !z-1"
+      >
+        <source
+          src={
+            productType === 'office'
+              ? '/store/office.mp4'
+              : '/store/home.mp4'
+          }
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
         </div>
       )}
 

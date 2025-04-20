@@ -9,7 +9,7 @@
     "start": "next start -p 7020",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
-  },
+  },  
   "dependencies": {
     "@headlessui/react": "^1.7.19",
     "@hookform/resolvers": "^3.4.0",
