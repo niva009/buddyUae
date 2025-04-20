@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from 'next/navigation';
 import LoginScreen from "../../components/screens/auth/Login";
 import RegisterScreen from "../../components/screens/auth/Register";
-import Link from "next/link";
 import Filter from "../../components/filters/Filter";
 import Pagination from "../../components/pagination/Pagination";
 import {
@@ -16,13 +15,9 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../../components/product/Product";
 import { ListFilter, Volume2, VolumeX } from "lucide-react";
-import ReactPlayer from "react-player";
 import CategoriesByType from "../../components/product/Categories";
-import { Helmet } from "react-helmet-async";
-import useSeoData from "../../utils/useSeoData";
 
 export default function ShopClient() {
-  const { seoData } = useSeoData();
   const location = useSearchParams();
 
   const [mute, setMute] = useState(true);
@@ -123,35 +118,7 @@ export default function ShopClient() {
 
   return (
     <>
-      <Helmet>
-        <title>Buddy Star | {productType ?? "Store"}</title>
-        <meta
-          name="description"
-          content="Welcome to buddyuae.com,Your Office and Home Buddy , Explore our wide selection of Home and Office equipment"
-        />
-        <meta
-          name="keywords"
-          content={
-            productType === "office"
-              ? seoData?.office_buddy
-              : seoData?.home_buddy
-          }
-        />
-        <meta property="og:title" content="Welcome to buddyuae.com" />
-        <meta
-          property="og:description"
-          content="Welcome to buddyuae.com,Your Office and Home Buddy , Explore our wide selection of Home and Office equipment"
-        />
-        <meta property="og:image" content="/favicon.png" />
-        <meta property="og:url" content="https://www.buddyuae.com" />
-        <meta name="twitter:card" content="/favicon.png" />
-        <meta name="twitter:title" content="Welcome to buddyuae.com" />
-        <meta
-          name="twitter:description"
-          content="Welcome to buddyuae.com,Your Office and Home Buddy , Explore our wide selection of Home and Office equipment"
-        />
-        <meta name="twitter:image" content="/favicon.png"></meta>
-      </Helmet>
+    
 
       <LoginScreen
         isOpen={openLogin}

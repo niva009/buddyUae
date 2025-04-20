@@ -61,6 +61,11 @@ export default function Filter({
     );
   };
 
+  console.log("brandList", brandList);
+console.log("priceFilterList", priceFilterList);
+
+
+
   return (
     <>
       {menuVisible && (
@@ -109,7 +114,7 @@ export default function Filter({
                       selectedBrands?.includes(i?.id) ? "text-blue" : ""
                     }`}
                   >
-                    {i?.name}
+                 {typeof i?.name === "string" ? i.name : "Unnamed"}
                   </p>
                 </div>
               ))}
@@ -147,9 +152,10 @@ export default function Filter({
                 checked={isPriceSelected({ min: i?.start, max: i?.end })}
                 className="size-4"
               />
-              <p>
-                AED {i?.start} - {i?.end >= "100000" ? "Above" : i?.end}
-              </p>
+           <p>
+  AED {i?.start} - {i?.end >= 100000 ? "Above" : i?.end}
+</p>
+
             </div>
           ))}
         </div>
