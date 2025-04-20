@@ -142,22 +142,23 @@ console.log("priceFilterList", priceFilterList);
             <p>All Price</p>
           </div>
           {priceFilterList?.map((i) => (
-            <div
-              key={i?.start + "-" + i?.end}
-              onClick={() => handlePriceClick({ min: i?.start, max: i?.end })}
-              className="flex gap-2 items-center cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                checked={isPriceSelected({ min: i?.start, max: i?.end })}
-                className="size-4"
-              />
-           <p>
-  AED {i?.start} - {i?.end >= 100000 ? "Above" : i?.end}
-</p>
+  <div
+    key={i?.start + "-" + i?.end}
+    onClick={() => handlePriceClick({ min: i?.start, max: i?.end })}
+    className="flex gap-2 items-center cursor-pointer"
+  >
+    <input
+      type="checkbox"
+      checked={isPriceSelected({ min: i?.start, max: i?.end })}
+      onChange={() => handlePriceClick({ min: i?.start, max: i?.end })} // Add onChange here
+      className="size-4"
+    />
+    <p>
+      AED {i?.start} - {i?.end >= 100000 ? "Above" : i?.end}
+    </p>
+  </div>
+))}
 
-            </div>
-          ))}
         </div>
         <button className="bg-blue mt-10 font-medium text-[0.9rem] text-white w-[90%] mx-auto rounded-full flex items-center justify-center h-11">
           Apply Filter
