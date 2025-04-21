@@ -131,7 +131,7 @@
           <div className="grid sm:grid-cols-2 lg:px-48 px-3">
             <div className="text-[1.5rem] font-semibold">Featured Products</div>
             <div className="flex sm:flex-col sm:text-end sm:justify-end font-semibold underline underline-offset-4">
-              <Link href="/top-sellings" className="flex justify-end gap-2">
+              <Link href="/store" className="flex justify-end gap-2">
                 More Products <ArrowRight className="stroke-1 w-6" />{" "}
               </Link>
             </div>
@@ -151,7 +151,7 @@
               New Arrivals
             </div>
             <div className="lg:flex flex-col text-end justify-end font-semibold underline underline-offset-4">
-              <Link href="/new-arrival" className="flex justify-end gap-2">
+              <Link href="/store" className="flex justify-end gap-2">
                 View All <ArrowRight className="stroke-1 w-6" />{" "}
               </Link>
             </div>

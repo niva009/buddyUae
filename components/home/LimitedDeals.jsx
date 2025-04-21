@@ -82,7 +82,7 @@ export default function LimitedDeals() {
           </div>
           <div
             onClick={() => {
-              navigate("/store");
+              navigate.push("/store");
             }}
             data-aos="fade-right"
             className="text-[1rem] cursor-pointer justify-center lg:justify-start font-medium underline underline-offset-8 flex items-center"
