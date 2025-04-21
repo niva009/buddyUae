@@ -2,51 +2,44 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from 'next/navigation';
-import LoginScreen from "../../components/screens/auth/Login";
-import RegisterScreen from "../../components/screens/auth/Register";
-import Filter from "../../components/filters/Filter";
-import Pagination from "../../components/pagination/Pagination";
+import { useQuery } from "@tanstack/react-query";
 import {
   PRODUCTS,
-  
   BRAND_PRODUCTS,
   newRequest,
   CATEGORY_PRODUCT,
 } from "../../components/api/index";
-import { useQuery } from "@tanstack/react-query";
+
 import ProductCard from "../../components/product/Product";
-import { ListFilter, Volume2, VolumeX } from "lucide-react";
+import Filter from "../../components/filters/Filter";
+import Pagination from "../../components/pagination/Pagination";
 import CategoriesByType from "../../components/product/Categories";
+import LoginScreen from "../../components/screens/auth/Login";
+import RegisterScreen from "../../components/screens/auth/Register";
+import { ListFilter, Volume2, VolumeX } from "lucide-react";
 
 export default function ShopClient() {
-  const location = useSearchParams();
-
-  const [mute, setMute] = useState(true);
-  const searchParams = location;
+  const searchParams = useSearchParams();
 
   const brand = searchParams.get("brand");
-  const category = searchParams.get("category");
   const productType = searchParams.get("product-type");
   const searchTerm = searchParams.get("q");
 
+  const savedCategoryId = typeof window !== 'undefined' ? localStorage.getItem("selectedCategoryId") : null;
+  const categoryId = savedCategoryId ? parseInt(savedCategoryId) : null;
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]); // Only for UI filter
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedPrices, setSelectedPrices] = useState([]);
   const [totalPages, setTotalPages] = useState();
-  let pageLimit = 12;
-  const [menuVisible, isMenuVisible] = useState(false);
   const [openLogin, setLoginOpen] = useState(false);
   const [openRegister, setRegisterOpen] = useState(false);
+  const [menuVisible, isMenuVisible] = useState(false);
+  const [mute, setMute] = useState(true);
 
-  useEffect(() => {
-    setCurrentPage(1);
-    setSelectedCategories([]);
-    setSelectedBrands([]);
-    setSelectedPrices([]);
-  }, [location.toString()]);
+  const pageLimit = 12;
 
-  // GET PRODUCTS
   const { data: products, isLoading } = useQuery({
     queryKey: [
       "products",
@@ -54,7 +47,7 @@ export default function ShopClient() {
       brand,
       selectedCategories,
       selectedPrices,
-      category,
+      categoryId,
       productType,
       searchTerm,
       selectedBrands,
@@ -62,18 +55,18 @@ export default function ShopClient() {
     queryFn: () =>
       newRequest
         .get(
-          `${brand ? BRAND_PRODUCTS : category ? CATEGORY_PRODUCT : PRODUCTS}`,
+          `${brand ? BRAND_PRODUCTS : categoryId ? CATEGORY_PRODUCT : PRODUCTS}`,
           {
             params: {
               page: currentPage,
               search: searchTerm,
               brand_id: brand ? parseInt(brand) : "",
-              category_id: category ? parseInt(category) : "",
+              category_id: categoryId,
               category: JSON.stringify(selectedCategories),
               price: JSON.stringify(selectedPrices),
               brand: JSON.stringify(selectedBrands),
               product_type:
-                productType == "office" ? 2 : productType == "home" ? 1 : null,
+                productType === "office" ? 2 : productType === "home" ? 1 : null,
               limit: pageLimit,
             },
           }
@@ -172,7 +165,7 @@ export default function ShopClient() {
       )}
 
       {/* Categories */}
-      {!category && (
+      {!categoryId && (
         <div className="flex pt-7 px-4 md:px-8 lg:px-48 flex-col items-start gap-7">
           <div className="text-xl capitalize font-bold">
             {productType || "All"} Categories
@@ -211,7 +204,7 @@ export default function ShopClient() {
             setSelectedBrands={setSelectedBrands}
             selectedCategories={selectedCategories}
             type={brand ? "brand" : ""}
-            categoryId={category}
+            categoryId={categoryId}
           />
 
           <div className="flex flex-col gap-8 lg:gap-2.5 w-full">
