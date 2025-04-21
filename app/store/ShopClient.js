@@ -10,7 +10,7 @@ import {
   CATEGORY_PRODUCT,
 } from "../../components/api/index";
 
-import ProductCard from "../../components/product/Product";
+import ProductCardHome from "../../components/product/productHome";
 import Filter from "../../components/filters/Filter";
 import Pagination from "../../components/pagination/Pagination";
 import CategoriesByType from "../../components/product/Categories";
@@ -210,7 +210,7 @@ export default function ShopClient() {
           <div className="flex flex-col gap-8 lg:gap-2.5 w-full">
             <div className="grid w-full md:grid-cols-2 lg:grid-cols-4 gap-5">
               {products?.data?.data?.map((product) => (
-                <ProductCard key={product?.id} product={product} />
+                <ProductCardHome key={product?.id} product={product} />
               ))}
             </div>
 
