@@ -3,7 +3,7 @@
 import React from "react";
 import { newRequest, FEATURED_PRODUCT } from "../../components/api/index";
 import { useQuery } from "@tanstack/react-query";
-import ProductCard from "../product/Product";
+import ProductCardHome from "../product/productHome";
 
 const NewArrivalProducts = () => {
   // GET LATEST PRODUCTS
@@ -22,7 +22,7 @@ const NewArrivalProducts = () => {
           (product?.product?.unit_price * product?.product?.discount) / 100;
         let discountedPrice = product?.product?.unit_price - discount;
         return (
-          <ProductCard
+          <ProductCardHome
             key={product?.id}
             product={product?.product}
             discountedPrice={discountedPrice}

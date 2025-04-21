@@ -8,6 +8,7 @@ import Filter from "../../components/filters/Filter";
 import Pagination from "../../components/pagination/Pagination";
 import {
   PRODUCTS,
+  
   BRAND_PRODUCTS,
   newRequest,
   CATEGORY_PRODUCT,
