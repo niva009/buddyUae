@@ -3,21 +3,21 @@
 import  { useEffect, useState } from "react";
 import { useParams } from 'next/navigation'
 import Link from "next/link";
-import RatingStars from "../../../components/product/Star";
-import QuantityButton from "../../../components/product/QuantityButton";
+import RatingStars from "../../components/product/Star";
+import QuantityButton from "../../components/product/QuantityButton";
 import { ArrowRight, ChevronRight, Sparkles, View } from "lucide-react";
-import { GET_REVIEW, PRODUCT_VIEW, newRequest } from "../../../components/api/index";
+import { GET_REVIEW, PRODUCT_VIEW, newRequest } from "../../components/api/index";
 import { useQuery } from "@tanstack/react-query";
-import WriteReviewScreen from "../../../components/screens/review/Write";
-import Reviews from "../../../components/product/Reviews";
-import { useUserStore } from "../../../lib/slice/user";
-import NewArrivalProducts from "../../../components/products/NewArrival";
-import AddCartBtn from "../../../components/product/AddCartBtn";
-import ProductLargeViewScreen from "../../../components/product/LargeView";
-import WishlistProduct from "../../../components/product/Wishlist";
-import useCurrencyFormatter from "../../../utils/useCurrency";
+import WriteReviewScreen from "../../components/screens/review/Write";
+import Reviews from "../../components/product/Reviews";
+import { useUserStore } from "../../lib/slice/user";
+import NewArrivalProducts from "../../components/products/NewArrival";
+import AddCartBtn from "../../components/product/AddCartBtn";
+import ProductLargeViewScreen from "../../components/product/LargeView";
+import WishlistProduct from "../../components/product/Wishlist";
+import useCurrencyFormatter from "../../utils/useCurrency";
 import ReactPlayer from "react-player";
-import { useCartStore } from "../../../lib/slice/cart";
+import { useCartStore } from "../../lib/slice/cart";
 
 export default function Product() {
     const params = useParams();
