@@ -102,8 +102,7 @@ const searchParams = useSearchParams();
   }, [isDropdownOpen]);
 
   const handleHome = () => {
-    navigate.push
-    ("/");
+    navigate.push("/");
   };
 
   return (

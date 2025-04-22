@@ -1,7 +1,12 @@
-'use client';
+'use client'
 
 import ShopClient from '../store/ShopClient';
+import { Suspense } from 'react';
 
 export default function OfficeProductsPage() {
-  return <ShopClient productType="office" />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ShopClient productType="office" />
+    </Suspense>
+  );
 }
