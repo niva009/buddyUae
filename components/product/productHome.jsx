@@ -15,7 +15,7 @@ const ProductCardHome = ({ product, discountedPrice }) => {
   console.log("product information", product);
   return (
     <Link
-      href={`/product/${productSlug}`}
+      href={`/${productSlug}`}
       key={product?.id}
       className="group relative"
     >
