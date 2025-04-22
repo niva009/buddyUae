@@ -10,7 +10,7 @@ import {
   CATEGORY_PRODUCT,
 } from "../../components/api/index";
 
-import ProdcutCategoryCard from "../../components/product/prodcutCategory";
+import ProdcutCategoryCard  from "../../components/product/prodcutCategory";
 import Filter from "../../components/filters/Filter";
 import Pagination from "../../components/pagination/Pagination";
 import CategoriesByType from "../../components/product/Categories";

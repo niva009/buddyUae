@@ -6,6 +6,8 @@
   import Link from "next/link";
   import { ArrowRight } from "lucide-react";
   import CategoryCard from "../components/home/category/Card";
+  // import AOS from "aos";
+  // import "aos/dist/aos.css";
   import FeaturedProducts from "../components/products/FeaturedProduct";
   import SubscribtionForm from "../components/forms/SubscribtionForm";
   import BrandCard from "../components/brands/Card";
@@ -20,6 +22,7 @@
 
   export default function Home() {
 
+      // AOS.init();
 
     return (
       <>
@@ -80,7 +83,7 @@
                       <br className="hidden lg:block" />
                     </span>
                     Solutions
-                  </div>
+                </div>
                   <Link
                     href={`/store?category=19`}
                     className="text-[1rem] underline underline-offset-8 flex justify-center items-center gap-1"
@@ -100,12 +103,7 @@
                   <span className="font-medium">Premium Safes at </span> <br />
                   Unbeatable <br /> Prices
                 </div>
-                <Link
-                  href={`/store?category=3`}
-                  className="text-[1rem] underline underline-offset-8 flex items-center gap-1"
-                >
-                  Shop Now <ArrowRight className="stroke-[1.4] w-[1.3rem]" />
-                </Link>
+            
               </div>
             </div>
             <div className="bg-[url('/img/offerzone/offerzone5.png')] rounded-2xl bg-cover bg-center h-[18rem] lg:h-[19rem]">

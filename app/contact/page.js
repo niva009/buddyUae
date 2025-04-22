@@ -3,7 +3,7 @@
 import ContactForm from "../../components/contact/Form";
 import SubscribtionForm from "../../components/forms/SubscribtionForm";
 import Head from "next/head";
-import { Suspense } from "react";
+
 
 
 
