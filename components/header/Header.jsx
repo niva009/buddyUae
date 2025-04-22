@@ -2,7 +2,6 @@
 
 import  { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { Suspense } from 'react'
 
 import {
   CircleUser,
@@ -103,8 +102,8 @@ const searchParams = useSearchParams();
   }, [isDropdownOpen]);
 
   const handleHome = () => {
-    window.scrollTo(0, 0);
-    navigate("/");
+    navigate.push
+    ("/");
   };
 
   return (
@@ -163,7 +162,7 @@ const searchParams = useSearchParams();
           <img
             className="w-52 lg:w-full lg:h-32 object-contain"
             src="/Logo_buddy-removebg-preview.png"
-            alt="buddy star"
+            alt="buddy Uae"
           />
         </button>
         <div

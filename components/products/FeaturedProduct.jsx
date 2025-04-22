@@ -24,7 +24,7 @@ const FeaturedProducts = () => {
 
         return (
           <Link
-            href={`/product/${productSlug}`}
+            href={`/${productSlug}`}
             key={product?.product_id}
             className="flex flex-col gap-2"
             onClick={() => handleProductClick(product?.product_id)}

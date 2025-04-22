@@ -347,17 +347,18 @@ export default function Product() {
                 aria-label="Specifications"
                 />
 
-              {productDetails?.product?.video_link ? (
-                <input
-                  type="radio"
-                  name="my_tabs_1"
-                  role="tab"
-                  checked={selectedTab == 3}
-                  onClick={() => setSelectedTab(3)}
-                  className="tab text-base !w-56 font-semibold"
-                  aria-label="Video"
-                />
-              ) : null}
+{productDetails?.product?.video_link ? (
+  <input
+    type="radio"
+    name="my_tabs_1"
+    role="tab"
+    checked={selectedTab === 3}
+    onChange={() => setSelectedTab(3)} // ✅ FIXED here
+    className="tab text-base !w-56 font-semibold"
+    aria-label="Video"
+  />
+) : null}
+
             </div>
             <>
               {selectedTab == 0 && (

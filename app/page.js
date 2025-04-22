@@ -6,8 +6,6 @@
   import Link from "next/link";
   import { ArrowRight } from "lucide-react";
   import CategoryCard from "../components/home/category/Card";
-  // import AOS from "aos";
-  // import "aos/dist/aos.css";
   import FeaturedProducts from "../components/products/FeaturedProduct";
   import SubscribtionForm from "../components/forms/SubscribtionForm";
   import BrandCard from "../components/brands/Card";
@@ -22,7 +20,6 @@
 
   export default function Home() {
 
-      // AOS.init();
 
     return (
       <>

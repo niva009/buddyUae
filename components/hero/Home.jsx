@@ -16,7 +16,7 @@ export default function HeroHome() {
       slideText: "Elevate Your Office.\nBrowse Now!",
       description:
         "Explore Our Collection for Stylish and Functional Solutions to Transform Your Workspace.",
-      buttonLink: "store?product-type=office",
+      buttonLink: "office",
       buttonText: "View Office Solutions",
     },
     {
@@ -24,7 +24,7 @@ export default function HeroHome() {
       slideText: "Enhance Your Home.\nBrowse Now!",
       description:
         "Discover Our Collection for Stylish and Functional Solutions to Elevate Your Home Space.",
-      buttonLink: "store?product-type=home",
+      buttonLink: "home",
       buttonText: "View Home Solutions",
     },
   ];
@@ -173,7 +173,7 @@ export default function HeroHome() {
               Transform Your Workspace.
             </div>
             <Link
-              href={`store?product-type=office`}
+              href={`/office-buddy`}
               className="h-10 w-auto flex gap-2 font-semibold bg-white group-hover:text-white group-hover:bg-blue text-[0.94rem] rounded-lg items-center justify-center px-4 text-blue"
             >
               <div>View Office Solutions </div>
@@ -188,7 +188,7 @@ export default function HeroHome() {
           <img
             className="group-hover:scale-[1.2] object-cover h-full w-full transition-all duration-1000"
             src="/bannerright.png"
-            alt=""
+            alt="buddyuae-home-banner"
           />
           <div className="flex absolute right-0 lg:items-end items-center flex-col lg:pr-28 gap-4">
             <div className="text-[2.7rem] text-center  lg:text-right leading-[1.2] font-bold">
@@ -205,7 +205,7 @@ export default function HeroHome() {
               Elevate Your Home Space
             </div>
             <Link
-              href={`store?product-type=home`}
+              href={`/home-buddy`}
               className="h-10 w-auto flex gap-2 font-semibold group-hover:text-white group-hover:bg-blue bg-white text-[0.94rem] rounded-lg items-center justify-center px-4 text-blue"
             >
               <span className="hidden group-hover:block transition-all duration-1000">

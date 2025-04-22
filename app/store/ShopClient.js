@@ -10,23 +10,26 @@ import {
   CATEGORY_PRODUCT,
 } from "../../components/api/index";
 
-import ProductCardHome from "../../components/product/productHome";
+import ProdcutCategoryCard from "../../components/product/prodcutCategory";
 import Filter from "../../components/filters/Filter";
 import Pagination from "../../components/pagination/Pagination";
 import CategoriesByType from "../../components/product/Categories";
 import LoginScreen from "../../components/screens/auth/Login";
 import RegisterScreen from "../../components/screens/auth/Register";
 import { ListFilter, Volume2, VolumeX } from "lucide-react";
+import { useCategoryStore } from '../../lib/slice/categoryStore';
 
-export default function ShopClient() {
+export default function ShopClient({productType }) {
   const searchParams = useSearchParams();
 
+  const categoryId = useCategoryStore((state) => state.selectedCategoryId);
+  console.log('Selected Category ID:', categoryId);
+
   const brand = searchParams.get("brand");
-  const productType = searchParams.get("product-type");
+  // const productType = searchParams.get("product-type");
   const searchTerm = searchParams.get("q");
 
-  const savedCategoryId = typeof window !== 'undefined' ? localStorage.getItem("selectedCategoryId") : null;
-  const categoryId = savedCategoryId ? parseInt(savedCategoryId) : null;
+ 
 
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategories, setSelectedCategories] = useState([]); // Only for UI filter
@@ -210,7 +213,7 @@ export default function ShopClient() {
           <div className="flex flex-col gap-8 lg:gap-2.5 w-full">
             <div className="grid w-full md:grid-cols-2 lg:grid-cols-4 gap-5">
               {products?.data?.data?.map((product) => (
-                <ProductCardHome key={product?.id} product={product} />
+                <ProdcutCategoryCard key={product?.id} product={product} />
               ))}
             </div>
 

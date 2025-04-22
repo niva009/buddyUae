@@ -44,7 +44,7 @@ export default function BrandCard() {
     >
       {topBrandsList?.data?.data?.map((brand) => (
         <Link
-          href={`/store/?brand=${brand?.brands?.id}`}
+          href={`/store}`}
           key={brand?.brands?.id}
           className="flex font-semibold border min-w-36 mb-5 p-4 px-4 border-black/20 rounded-sm text-[0.9rem] flex-col items-center gap-3"
         >
