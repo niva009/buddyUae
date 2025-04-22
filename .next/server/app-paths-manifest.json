@@ -1,8 +1,7 @@
 {
-  "/contact/page": "app/contact/page.js",
+  "/category/[slug]/page": "app/category/[slug]/page.js",
+  "/cart/page": "app/cart/page.js",
   "/page": "app/page.js",
   "/[slug]/page": "app/[slug]/page.js",
-  "/office-buddy/page": "app/office-buddy/page.js",
-  "/home-buddy/page": "app/home-buddy/page.js",
-  "/store/page": "app/store/page.js"
+  "/wishlist/page": "app/wishlist/page.js"
 }

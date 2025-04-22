@@ -22,7 +22,7 @@ const ProdcutCategoryCard = ({ product, discountedPrice }) => {
       <div className="h-72 relative p-4 h-84 lg:p-1 flex border border-black/20 items-center justify-center group-hover:shadow group-hover:scale-[1.02] transition-all duration-500 w-full bg-cover rounded-sm bg-no-repeat">
       <img
   className="h-full object-contain w-full"
-  src={`${product?.thumbnail_img_link}`}
+  src={`${process.env.NEXT_PUBLIC_IMG_URL}${product?.thumbnail_img_link}`}
   alt={product?.name}
   onClick={handleProductClick}
 />
@@ -54,14 +54,7 @@ const ProdcutCategoryCard = ({ product, discountedPrice }) => {
               {formatCurrencyAED(product?.unit_price)}
             </div>
           ) : null}
-          {/* {product?.discount != 0 ? (
-            <>
-              <div className="flex line-through font-black text-black/40 text-base text-bold">
-                <span className="rs font-semibold text-[.82rem]">AED</span>{" "}
-                {discountedPrice}
-              </div>
-            </>
-          ) : null} */}
+
         </div>
       </div>
     </Link>

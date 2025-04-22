@@ -1,4 +1,3 @@
-
 'use client';
 
 import { newFormRequest, REMOVE_WISHLIST } from "../../components/api/index";
@@ -8,22 +7,29 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { useWishlistStore } from "../../lib/slice/wishlist";
 import useCurrencyFormatter from "../../utils/useCurrency";
+import slugify from "slugify";
 
 export default function Wishlist() {
   const { user } = useUserStore((state) => ({
     user: state.user,
   }));
-  const formatCurrencyAED = useCurrencyFormatter();
 
+  const formatCurrencyAED = useCurrencyFormatter();
   const queryClient = useQueryClient();
 
-  // wishlist
   const { wishlistItems, removeItemFromWishlist } = useWishlistStore(
     (state) => ({
       wishlistItems: state.wishlistItems,
       removeItemFromWishlist: state.removeItemFromWishlist,
     })
   );
+
+  const handleProductClick = (product) => {
+    localStorage.setItem("selectedProductId", product?.id);
+  };
+
+  const getProductSlug = (product) =>
+    slugify(product?.name || "", { lower: true });
 
   const removeFromWishlist = async (id) => {
     if (!user?.id) {
@@ -57,7 +63,7 @@ export default function Wishlist() {
               <table className="table">
                 <thead>
                   <tr className="font-bold text-black text-[.9rem] border-b-1 border-[#6C7275]">
-                    <th className="">Wishlisted Product</th>
+                    <th>Wishlisted Product</th>
                     <th>Price</th>
                     <th></th>
                   </tr>
@@ -69,7 +75,8 @@ export default function Wishlist() {
                         <div className="flex items-center gap-4">
                           <div className="avatar">
                             <Link
-                              href={`/product/${i?.id}`}
+                              href={`/${getProductSlug(i)}`}
+                              onClick={() => handleProductClick(i)}
                               className="mask w-12 flex items-center justify-center rounded-sm border-black/20 border lg:w-20 lg:h-24"
                             >
                               <img
@@ -81,7 +88,8 @@ export default function Wishlist() {
                           </div>
                           <div className="flex items-center gap-2">
                             <Link
-                              href={`/product/${i?.id}`}
+                              href={`/${getProductSlug(i)}`}
+                              onClick={() => handleProductClick(i)}
                               className="font-bold max-w-48 w-48 lg:min-w-20 min-w-52 text-[.85rem]"
                             >
                               {i?.name}
@@ -107,7 +115,8 @@ export default function Wishlist() {
                             Remove
                           </div>
                           <Link
-                            href={`/product/${i?.id}`}
+                            href={`/${getProductSlug(i)}`}
+                            onClick={() => handleProductClick(i)}
                             className="font-bold underline underline-offset-2 cursor-pointer text-blue"
                           >
                             Go to Product

@@ -45,7 +45,7 @@ export default function CategoryCard() {
           <div className="flex flex-col p-6 gap-3 text-white justify-center text-start">
             <div className="flex text-xl font-medium group-hover:text-[1.52rem] ease-in duration-300">
            <Link 
-                href={`/store?category=${createSlug(category.name)}`}
+                href={`/category/${createSlug(category.name)}`}
                 onClick={() => handleCategoryClick(category.categoryId)}
               >
                 {category.name}
@@ -55,13 +55,27 @@ export default function CategoryCard() {
               {category.description}
             </div>
           </div>
-          <div className="text-center justify-center flex">
-            <img src={category.image} className="object-contain h-56 md:h-64 lg:h-56 absolute bottom-3" alt={category.name} />
-          </div>
+          <div className="text-center justify-center flex relative h-56 md:h-64 lg:h-56">
+  <img 
+    src={category.image}
+    className="object-contain h-full absolute bottom-3"
+    alt={category.name}
+  />
+  <Link
+    href={`/category/${createSlug(category.name)}`}
+    onClick={() => handleCategoryClick(category.categoryId)}
+    className="absolute bottom-3 h-full w-full z-10"
+  >
+    <span className="sr-only">{category.name}</span>
+  </Link>
+</div>
+
+
+
           <div className="flex flex-col p-6 justify-center text-center group-hover:bg-gradient-to-t from-black group-hover:rounded-lg to-transparent group-hover:z-10 group-hover:pt-28">
             <div className="flex justify-center">
             <Link
-                href={`/store?category=${createSlug(category.name)}`}
+                href={`/category/${createSlug(category.name)}`}
                 onClick={() => handleCategoryClick(category.categoryId)}
                 className="h-10 w-40 z-0 font-semibold bg-blue text-[0.94rem] rounded-lg flex items-center justify-center px-7 text-white bg-blue-500 hover:bg-blue-600 transform transition-transform duration-1000 opacity-0 group-hover:opacity-100 group-hover:-translate-y-5"
               >

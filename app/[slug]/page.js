@@ -531,7 +531,7 @@ export default function Product() {
                 You might also like
               </div>
               <div className="flex flex-col text-[0.94rem] text-end justify-end font-semibold underline underline-offset-4">
-                <Link href="/shop" className="flex justify-end gap-2" >
+                <Link href="/store" className="flex justify-end gap-2" >
                   More Products <ArrowRight className="stroke-1 w-6" />{" "}
                 </Link>
               </div>
