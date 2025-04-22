@@ -17,7 +17,7 @@ export default function Faq() {
             alt="buddy star"
           />
         </div>{" "}
-        <h1 className="text-xl my-4 font-bold">Frequently Asked Question</h1>
+        <h1 className="text-xl my-4 font-bold">Frequently Asked Questions</h1>
         <div className="flex mx-auto">
           <div role="tabpanel" className="py-5 flex flex-col gap-2">
             <div className="collapse rounded-md collapse-plus bg-base-200">
@@ -82,7 +82,7 @@ export default function Faq() {
                 <p className="text-grey">
                   After placing an order, you will receive a confirmation email
                   with a tracking number. You can use this number to track your
-                  order directly on our website or via the courier's website.
+                  order directly on our website or via the couriers website.
                 </p>
               </div>
             </div>
