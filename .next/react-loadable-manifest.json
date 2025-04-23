@@ -1,10 +1,4 @@
 {
-  "components\\home\\VideoBanner.jsx -> aos": {
-    "id": "components\\home\\VideoBanner.jsx -> aos",
-    "files": [
-      "static/chunks/_app-pages-browser_node_modules_aos_dist_aos_js.js"
-    ]
-  },
   "node_modules\\@tanstack\\query-devtools\\build\\dev.js -> ./Devtools/WIIHGP5G.js": {
     "id": "node_modules\\@tanstack\\query-devtools\\build\\dev.js -> ./Devtools/WIIHGP5G.js",
     "files": [

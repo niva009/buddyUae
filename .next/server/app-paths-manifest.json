@@ -1,7 +1,4 @@
 {
-  "/cart/page": "app/cart/page.js",
-  "/ordercomplete/page": "app/ordercomplete/page.js",
-  "/[slug]/page": "app/[slug]/page.js",
-  "/save-address/page": "app/save-address/page.js",
-  "/checkout/page": "app/checkout/page.js"
+  "/checkout/page": "app/checkout/page.js",
+  "/[slug]/page": "app/[slug]/page.js"
 }

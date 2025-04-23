@@ -138,7 +138,7 @@ export default function CartSummary({
             </div>
           </div>
 
-          {createPaymentIntent ? (
+          {/* {createPaymentIntent ? (
             <button
               onClick={createPaymentIntent}
               className="flex bg-blue capitalize items-center font-medium text-white justify-center h-12 rounded-lg gap-2 text-[0.94rem]"
@@ -156,15 +156,15 @@ export default function CartSummary({
                   Continue to Payment
                 </>
               )}
-            </button>
-          ) : (
-            <Link
+            </button> */}
+          {/* ) : ( */}
+            {/* <Link
               href={"/checkout"}
               className="flex bg-blue capitalize items-center font-medium text-white justify-center h-12 rounded-lg gap-2 text-[0.94rem]"
             >
               Continue to Checkout <ArrowRight className="h-5" />
-            </Link>
-          )}
+            </Link> */}
+          {/* )} */}
 
           {havingDefaultAddress ? (
             <button
