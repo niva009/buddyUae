@@ -1,10 +1,12 @@
+'use client';
+
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Edit2 } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
-import { newFormRequest, UPDATE_USER } from "../../api";
+import { newFormRequest, UPDATE_USER } from "../../components/api/index";
 import toast from "react-hot-toast";
 
 // Create a validation schema with Yup

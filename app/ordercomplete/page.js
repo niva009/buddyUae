@@ -5,14 +5,21 @@ import Link from "next/link";
 import { CONFIRM_ORDER, newRequest } from "../../components/api/index";
 // import bgImage from "/cart/bg.png";
 import { useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useCartStore } from "../../lib/slice/cart";
 
 export default function OrderComplete() {
 //   const location = useLocation();
   const [loader, setLoader] = useState(false);
+  const [payment_id, setPaymentId] = useState("");
   const queryClient = useQueryClient();
-  let payment_id = localStorage.getItem("py_id");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const id = localStorage.getItem("py_id");
+      setPaymentId(id);
+    }
+  }, []);
 //   const queryParams = new URLSearchParams(location.search);
 //   const paymentIntent = queryParams.get("payment_intent");
 //   const redirectStatus = queryParams.get("redirect_status");

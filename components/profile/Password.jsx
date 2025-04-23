@@ -1,9 +1,11 @@
+'use client';
+
 import { Edit2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import React, { useState } from "react";
-import { CHANGE_PASSWORD, newFormRequest } from "../../api";
+import { CHANGE_PASSWORD, newFormRequest } from "../../components/api/index";
 import toast from "react-hot-toast";
 
 // Create a validation schema with Yup

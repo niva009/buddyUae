@@ -28,11 +28,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+
+
 export default function Header() {
-  const { user, setUser } = useUserStore((state) => ({
-    user: state.user,
-    setUser: state.setUser,
-  }));
+const [user,setUser] = useState("");
   const navigate = useRouter();
   const pathname = usePathname();
 const searchParams = useSearchParams();
@@ -43,6 +42,16 @@ const searchParams = useSearchParams();
   const { wishlistItems } = useWishlistStore((state) => ({
     wishlistItems: state.wishlistItems,
   }));
+
+
+  
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const id = localStorage.getItem("user_id");
+      if (id) setUser(id);
+    }
+  }, []);
+
 
   const { setLoginOpen } = useAuthScreenToggleStore((state) => ({
     setLoginOpen: state.setLoginOpen,
@@ -216,12 +225,12 @@ const searchParams = useSearchParams();
               </div>
             )}
           </Link>
-          {user?.name ? (
+          {user? (
             <Menu as="div" className="relative">
               <Menu.Button>
                 <div className="flex mt-1.5 font-medium items-center lg:min-w-28 gap-2">
                   <CircleUser className="text-[#2b2b2b]" />
-                  <span className="hidden lg:block">{user?.name}</span>
+                  {/* <span className="hidden lg:block">{user}</span> */}
                 </div>
               </Menu.Button>
               <Transition
