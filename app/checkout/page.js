@@ -23,12 +23,17 @@ import { useAuthScreenToggleStore } from "../../lib/slice/authScreen";
 import ToastPopup from "../../components/screens/ToastPopup";
 import { useCartStore } from "../../lib/slice/cart";
 
+import AddressEditModal from "../../components/AddressEditModal/page";
+import SaveAddressForm from "../save-address/page";
+
 
 
 export default function ChooseAddress() {
   const [paymentIntentLoader, setPaymentIntentLoader] = useState(false);
   const [appliedCoupon, setAppliedCoupon] = useState("");
   const [user,setUser] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const [editAddressId, setEditAddressId] = useState(null);
 
 
   useEffect(() => {
@@ -163,7 +168,7 @@ export default function ChooseAddress() {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; 
 
   const ChangeAddress = async (address) => {
     const formData = new FormData();
@@ -190,7 +195,7 @@ export default function ChooseAddress() {
     };
   });
 
-  console.log("product in cart", productsInCart);
+  console.log("product in cart!!!!", productsInCart);
 
   const isWeightIdRequired =
     cartList?.total_weight > 100 &&
@@ -375,12 +380,15 @@ export default function ChooseAddress() {
                   </div>
                 </div>
                 <div className="flex text-[0.94rem] gap-2">
-                  <Link
-                    href={`/cart/save-address/${i?.id}`}
-                    className="font-semibold"
-                  >
-                    Edit
-                  </Link>
+                <button
+            onClick={() => {
+              setEditAddressId(i?.id);
+              setOpenModal(true);
+            }}
+            className="font-semibold text-blue-500"
+          >
+            Edit
+          </button>
                   <div className="text-gray">|</div>
                   <div
                     onClick={() => handleDeleteAddress(i?.id)}
@@ -420,6 +428,15 @@ export default function ChooseAddress() {
           />
         </div>
       )}
+      {openModal && (
+  <AddressEditModal
+  open={openModal}
+  onOpenChange={setOpenModal}
+  addressId={editAddressId}
+/>
+
+)}
+
       {isWeightIdRequired && havingDefaultAddress ? (
         <WeightForm weightId={weightId} setWeightId={setWeightId} user={user} />
       ) : null}

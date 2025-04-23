@@ -31,21 +31,22 @@ const schema = Yup.object({
   addressType: Yup.string().required("Address type is required"),
   land_mark: Yup.string().required("Landmark is required"),
 });
-export default function SaveAddress() {
-
-
-
-
+export default function SaveAddress({addressId,onSuccess }) {
  
-  const params = useParams();
   const [defaultAddress, setDefaultAddress] = useState(false);
   const [user,setUser] = useState("");
   const queryClient = useQueryClient();
   const [loader, setLoader] = useState(false);
 
 
+  console.log("address id informaation",addressId);
+
+
   const navigate = useRouter();
-  const id = params.id;
+  const id = Number(addressId)
+
+
+  console.log("iddddd", id);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -54,7 +55,10 @@ export default function SaveAddress() {
     }
   }, []);
   
-
+  const handleCancelClick = () => {
+    onSuccess(); // Call the onSuccess function
+    navigate.push("/checkout"); // Navigate to the checkout page
+  };
 
   const { data: addressDetail } = useQuery({
     queryKey: ["addressDetail", user],
@@ -121,18 +125,22 @@ export default function SaveAddress() {
     formData.append("locality", data?.locality);
     formData.append("land_mark", data?.land_mark);
     formData.append("address_type", data?.addressType);
-    formData.append("is_default_address", defaultAddress == true ? 1 : 0);
+    formData.append("is_default_address", defaultAddress ? 1 : 0);
+  
     try {
       const res = await newFormRequest.post(
         id ? UPDATE_ADDRESS : ADD_ADDRESS,
         formData
       );
-      if (res?.status === 201) {
+      
+      // Check if the response status is either 200 or 201
+      if (res?.status === 200 || res?.status === 201) {
         queryClient.invalidateQueries(["address"]);
         setLoader(false);
-        toast.success(res?.data?.message);
-        navigate.push("/checkout");
-        reset();
+        toast.success(res?.data?.message);  // Display success message
+        navigate.push("/checkout");  // Navigate to the checkout page
+        onSuccess();  // Close the modal or trigger success logic
+        reset();  // Reset form
       }
     } catch (error) {
       setError("user_phone", {
@@ -144,13 +152,16 @@ export default function SaveAddress() {
         message: error?.response?.data?.errors?.pincode?.[0],
       });
       setLoader(false);
+  
+      // Display error message
       if (error?.response?.data?.message) {
         toast.error(error?.response?.data?.message);
       } else {
-        toast.error("Some error occurred please try again after sometime");
+        console.log("some error")
       }
     }
   };
+  
 
   return (
     <>
@@ -384,11 +395,12 @@ export default function SaveAddress() {
                 )}
               </button>
               <Link
-                href="/checkout"
-                className="flex items-center text-black justify-center h-10 rounded-full gap-2 text-[0.9rem]"
-              >
-                Cancel
-              </Link>
+            href="/checkout"
+            onClick={handleCancelClick} 
+            className="flex items-center text-black justify-center h-10 rounded-full gap-2 text-[0.9rem]"
+          >
+            Cancel
+          </Link>
             </div>
           </form>
         </div>
