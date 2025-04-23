@@ -4,7 +4,7 @@ import axios from "axios";
 
 // Axios instances
 const baseConfig = {
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "https://admin.buddyuae.com/api",
 };
 
 export const basicRequest = axios.create(baseConfig);
