@@ -9,7 +9,6 @@ import { LOGIN, newFormRequest } from "../../../components/api/index";
 import toast from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAuthScreenToggleStore } from "../../../lib/slice/authScreen";
-import { Link } from "react-router-dom";
 
 // schema
 const schema = Yup.object({
@@ -44,6 +43,7 @@ export default function LoginScreen() {
     setLoader(true);
     submitForm(data);
   };
+  
   const submitForm = async (data) => {
     const formData = new FormData();
     formData.append("email", data.email);

@@ -24,6 +24,10 @@ export default function Cart() {
 
 
 
+  console.log("cart items in cart", cartItems);
+
+
+
   const [subtotal, setSubtotal] = useState(0);
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [taxAmount, setTaxAmount] = useState(0);

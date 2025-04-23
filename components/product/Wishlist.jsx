@@ -14,6 +14,8 @@ export default function WishlistProduct({ type, productId, product }) {
     user: state.user,
   }));
 
+  console.log("user", user);
+
   // wishlist
   const { addToWishlist, wishlistItems, removeItemFromWishlist } =
     useWishlistStore((state) => ({

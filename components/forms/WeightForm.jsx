@@ -1,8 +1,10 @@
+'use client';
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { newFormRequest, WEIGHT_FORM } from "../../api";
+import { newFormRequest, WEIGHT_FORM } from "../../components/api/index";
 import toast from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
 
