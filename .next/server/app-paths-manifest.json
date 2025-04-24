@@ -1,9 +1,4 @@
 {
-  "/office-buddy/page": "app/office-buddy/page.js",
-  "/checkout/page": "app/checkout/page.js",
-  "/wishlist/page": "app/wishlist/page.js",
-  "/page": "app/page.js",
-  "/home-buddy/page": "app/home-buddy/page.js",
-  "/[slug]/page": "app/[slug]/page.js",
-  "/store/page": "app/store/page.js"
+  "/cart/page": "app/cart/page.js",
+  "/checkout/page": "app/checkout/page.js"
 }
