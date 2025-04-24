@@ -27,7 +27,7 @@ export default function WeightForm({ setWeightId, user }) {
   const queryClient = useQueryClient();
   const [loader, setLoader] = useState(false);
   const [liftAvailable, setLiftAvailable] = useState(true);
-  consr[error,setclearErrors ] = useState('');
+  const [error,setclearErrors ] = useState('');
 
   const {
     register,

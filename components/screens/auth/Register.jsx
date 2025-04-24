@@ -34,10 +34,9 @@ const schema = Yup.object({
 export default function RegisterScreen() {
   const {
     registerOpen,
-    setLoginOpen,
-    otpVerified,
+    // otpVerified,
     setRegisterOpen,
-    setEmailToBeVerified,
+    // setEmailToBeVerified,
     setVerifyOtpOpen,
     userEmailToBeVerified,
   } = useAuthScreenToggleStore((state) => ({
@@ -54,6 +53,12 @@ export default function RegisterScreen() {
   const [passwordIsVisble, setPasswordIsVisble] = useState(false);
   const [confirmPasswordIsVisble, setConfirmPasswordIsVisble] = useState(false);
   const queryClient = useQueryClient();
+
+
+  
+    const { setLoginOpen } = useAuthScreenToggleStore((state) => ({
+      setLoginOpen: state.setLoginOpen,
+    }));
 
   const handleVerifyMail = async () => {
     if (!userEmailToBeVerified) {
@@ -105,6 +110,7 @@ export default function RegisterScreen() {
         setLoader(false);
         toast.success("Thank for registering with us");
         closeModal();
+        setLoginOpen(true);
       }
     } catch (error) {
       setError("email", {
@@ -181,7 +187,7 @@ export default function RegisterScreen() {
                     <div className="flex gap-0.5 w-full items-start text-grey flex-col group">
                       <div className="flex justify-between w-full">
                         <label>Email address</label>
-                        {otpVerified ? (
+                        {/* {otpVerified ? (
                           <div className="flex items-center gap-0.5 text-blue font-semibold text-sm">
                             <Verified /> Verified
                           </div>
@@ -192,14 +198,14 @@ export default function RegisterScreen() {
                           >
                             Verify Otp
                           </div>
-                        )}
+                        )} */}
                       </div>
                       <input
                         type="mail"
                         {...register("email")}
-                        onChange={(e) => {
-                          setEmailToBeVerified(e.target.value);
-                        }}
+                        // onChange={(e) => {
+                        //   setEmailToBeVerified(e.target.value);
+                        // }}
                         className="border-b bg-transparent w-full text-linkblack font-medium border-gray"
                       />
                       {errors.email && (
@@ -269,9 +275,9 @@ export default function RegisterScreen() {
                     </div>
                   </div>
                   <button
-                    disabled={otpVerified === false}
+                    // disabled={otpVerified === false}
                     className={`flex font-medium text-white w-full rounded-lg items-center justify-center h-12 mt-10 ${
-                      otpVerified ? "bg-blue" : "bg-blue/50"
+                      "bg-blue" 
                     }`}
                   >
                     {loader ? (

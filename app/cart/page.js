@@ -17,6 +17,9 @@ export default function Cart() {
   const { user } = useUserStore((state) => ({
     user: state.user,
   }));
+
+
+  console.log("user infoocart", user);
   const { cartItems, removeItemFromCart } = useCartStore((state) => ({
     cartItems: state.cartItems,
     removeItemFromCart: state.removeItemFromCart,

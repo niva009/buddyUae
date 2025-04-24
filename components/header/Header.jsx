@@ -277,6 +277,7 @@ const searchParams = useSearchParams();
                         localStorage.removeItem("secret_token");
                         localStorage.removeItem("user_id");
                         setUser({});
+                        window.location.reload()
                       }}
                       className="bg-[#BF464608] px-4 py-3 w-full flex text-sm items-center justify-center text-[#D12323] font-medium"
                     >

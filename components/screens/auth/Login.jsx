@@ -72,7 +72,8 @@ export default function LoginScreen() {
       if (error?.response?.data?.message) {
         toast.error(error?.response?.data?.message);
       } else {
-        toast.error("Some error occurred please try again after sometime");
+        // toast.error("Some error occurred please try again after sometime");
+        console.log("errrr")
       }
     }
   };

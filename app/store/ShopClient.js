@@ -10,7 +10,7 @@ import {
   CATEGORY_PRODUCT,
 } from "../../components/api/index";
 
-import ProdcutCategoryCard  from "../../components/product/prodcutCategory";
+import ProductHomeOfiice  from "../../components/product/producthomeoffice";
 import Filter from "../../components/filters/Filter";
 import Pagination from "../../components/pagination/Pagination";
 import CategoriesByType from "../../components/product/Categories";
@@ -213,7 +213,7 @@ export default function ShopClient({productType }) {
           <div className="flex flex-col gap-8 lg:gap-2.5 w-full">
             <div className="grid w-full md:grid-cols-2 lg:grid-cols-4 gap-5">
               {products?.data?.data?.map((product) => (
-                <ProdcutCategoryCard key={product?.id} product={product} />
+                <ProductHomeOfiice key={product?.id} product={product} />
               ))}
             </div>
 

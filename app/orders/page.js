@@ -3,16 +3,27 @@
 import { useQuery } from "@tanstack/react-query";
 import { Filter } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { useUserStore } from "../../lib/slice/user";
-import { Link } from "react-router-dom";
 import { newRequest, ORDERS } from "../../components/api/index";
 import useCurrencyFormatter from "../.././utils/useCurrency";
 import Pagination from "../../components/pagination/Pagination";
+import Link from "next/link";
+
 
 export default function Orders() {
-  const { user } = useUserStore((state) => ({
-    user: state.user,
-  }));
+
+
+  const [user, setUser]= useState("");
+
+useEffect(() =>{
+
+  if(Window.type !=="undefind"){
+    const id = localStorage.getItem("user_id");
+    setUser(id);
+  }
+})
+
+
+  console.log("userinformation-orders", user)
   const formatCurrencyAED = useCurrencyFormatter();
   const [keyword, setKeyword] = useState("");
   const [filter, setFilter] = useState("all");
@@ -25,10 +36,10 @@ export default function Orders() {
     queryFn: () =>
       newRequest
         .get(ORDERS, {
-          params: { customer_id: user?.id, search: keyword, filter: filter },
+          params: { customer_id: user, search: keyword, filter: filter },
         })
         .then((res) => res.data),
-    enabled: !!user?.id,
+    enabled: !!user,
   });
 
   useEffect(() => {
@@ -194,7 +205,7 @@ export default function Orders() {
                   <div key={i.combined_order_id}>
                     <div className="flex flex-col gap-3  md:flex-row md:gap-0 items-center justify-between">
                       <Link
-                        to={`/order/${i.combined_order_id}`}
+                        href={`/order/${i.combined_order_id}`}
                         className="flex items-center gap-3"
                       >
                         <img
