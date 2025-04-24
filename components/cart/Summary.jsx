@@ -27,6 +27,9 @@ export default function CartSummary({
   const formatCurrencyAED = useCurrencyFormatter();
 
   // Check coupon validity
+
+  console.log("payment loader", paymentIntentLoader);
+
   const checkCouponValidity = async () => {
     try {
       const res = await newRequest(CHECK_COUPON, {
@@ -115,31 +118,30 @@ export default function CartSummary({
             valueClass="text-black"
           />
 
-          {createPaymentIntent ? (
-            <button
-              onClick={createPaymentIntent}
-              className="flex bg-blue capitalize items-center font-medium text-white justify-center h-12 rounded-lg gap-2 text-[0.94rem]"
-            >
-              {paymentIntentLoader ? (
-                <div className="flex items-center gap-3">
-                  <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white" />
-                  <span className="whitespace-nowrap">Proceeding to payment</span>
-                </div>
-              ) : (
-                <>
-                  <CreditCard className="h-5" />
-                  Continue to Payment
-                </>
-              )}
-            </button>
-          ) : (
-            <Link
-              href="/checkout"
-              className="flex bg-blue capitalize items-center font-medium text-white justify-center h-12 rounded-lg gap-2 text-[0.94rem]"
-            >
-              Continue to Checkout <ArrowRight className="h-5" />
-            </Link>
-          )}
+{createPaymentIntent ? (
+  <></>
+  // <button
+  //   onClick={createPaymentIntent}
+  //   className="flex bg-blue capitalize items-center font-medium text-white justify-center h-12 rounded-lg gap-2 text-[0.94rem]"
+  // >
+  //   {paymentIntentLoader ? (
+  //     <div className="flex items-center gap-3">
+  //       <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white" />
+  //       <span className="whitespace-nowrap">Proceeding to payment</span>
+  //     </div>
+  //   ) : (
+  //     <span className="whitespace-nowrap">Proceed to Payment</span>
+  //   )}
+  // </button>
+) : (
+  <Link
+    href="/checkout"
+    className="flex bg-blue capitalize items-center font-medium text-white justify-center h-12 rounded-lg gap-2 text-[0.94rem]"
+  >
+    Continue to Checkout <ArrowRight className="h-5" />
+  </Link>
+)}
+
 
           {havingDefaultAddress && (
             <button

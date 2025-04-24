@@ -344,7 +344,7 @@ export default function Product() {
                 checked={selectedTab === 1}
                 onChange={() => setSelectedTab(1)} // ✅ use onChange instead of onClick
                 className="tab text-sm lg:pb-0 md:pb-10 lg:text-base !w-44 font-semibold"
-                aria-label="Specifications"
+                aria-label="Review"
                 />
 
 {productDetails?.product?.video_link ? (

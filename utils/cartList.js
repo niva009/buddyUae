@@ -7,12 +7,11 @@ import { useEffect, useState } from "react";
 const useCartList = () => {
   const [userId, setUserId] = useState(null);
 
-  // ✅ On mount, get user_id from localStorage (if user is not in Zustand)
   useEffect(() => {
     const id = localStorage.getItem("user_id");
     if (id) {
       setUserId(id);
-    }
+    } 
   }, []);
 
   console.log("user id lib", userId);
@@ -24,11 +23,11 @@ const useCartList = () => {
       const res = await newRequest.get(LIST_CART, {
         params: { customer_id: userId },
       });
+
+      console.log("responseee111111111", res);
       return res.data;
     },
-    enabled: !!userId, // ✅ Fetch only when user_id is available
-    staleTime: 70000000000,
-    cacheTime: 70000000000,
+    enabled: !!userId, 
   });
 
   return { cartList, isLoading };

@@ -24,7 +24,7 @@ import ToastPopup from "../../components/screens/ToastPopup";
 import { useCartStore } from "../../lib/slice/cart";
 
 import AddressEditModal from "../../components/AddressEditModal/page";
-import SaveAddressForm from "../save-address/page";
+
 
 
 
@@ -41,7 +41,7 @@ export default function ChooseAddress() {
       const auth = localStorage.getItem("user_id");
       const coupon = localStorage.getItem("coupon");
 
-      setUser(auth || ""); // fallback to empty string
+      setUser(auth || ""); 
       if (coupon) {
         try {
           const parsed = JSON.parse(coupon);
@@ -69,7 +69,7 @@ export default function ChooseAddress() {
   // GET CART
   const { cartList, isLoading } = useCartList();
 
-  console.log("cart items", cartList);
+  console.log("cart items-cartlist", cartList);
 
   const [subtotal, setSubtotal] = useState(0);
   const [taxAmount, setTaxAmount] = useState(0);
@@ -170,6 +170,7 @@ export default function ChooseAddress() {
     }
   }; 
 
+
   const ChangeAddress = async (address) => {
     const formData = new FormData();
     formData.append("customer_id", user);
@@ -194,6 +195,7 @@ export default function ChooseAddress() {
       quantity: parseInt(i?.quantity),
     };
   });
+
 
   console.log("product in cart!!!!", productsInCart);
 
@@ -253,7 +255,6 @@ export default function ChooseAddress() {
     }
   };
 
-  // Cash on delivery
   const cashOnDelivery = async () => {
     if (havingDefaultAddress === false) {
       toast.error("Please add a delivery address");
@@ -288,7 +289,7 @@ export default function ChooseAddress() {
       if (response?.status === 200) {
         clearCart();
         localStorage.removeItem("coupon");
-        navigate("/ordercomplete");
+        navigate.push("/ordercomplete");
       } else {
         setLoader(false);
         toast.error("Some error occurred");

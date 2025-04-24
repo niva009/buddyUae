@@ -7,8 +7,8 @@ export default function Footer() {
   const path = location.pathname;
   const navigate = useRouter();
   const handleHome = () => {
-    window.scrollTo(0, 0);
-    navigate("/");
+   
+    navigate.push("/");
   };
   return (
     <div
